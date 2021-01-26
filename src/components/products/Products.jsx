@@ -1,10 +1,11 @@
 import { Grid } from "@material-ui/core";
 import React from "react";
 import Product from "./Product/Product";
-import Napkins70 from "../../assets/napkins70.jpeg";
-import Napkins100 from "../../assets/napkins100.jpeg";
-import Papper from "../../assets/papper.jpeg";
-import Towel from "../../assets/towel.jpeg";
+import Napkins70 from "../../assets/napkins70.jpg";
+import Napkins400 from "../../assets/napkins400.jpg";
+import Papper from "../../assets/papper.jpg";
+import Towel from "../../assets/towel.jpg";
+import Towel2 from "../../assets/towel2.jpg";
 
 const products = [
   {
@@ -23,10 +24,10 @@ const products = [
   },
   {
     id: 3,
-    name: "Napkins 100",
+    name: "Napkins 400",
     description: "for y face",
     price: "1.3$",
-    image: Napkins100,
+    image: Napkins400,
   },
   {
     id: 4,
@@ -34,6 +35,13 @@ const products = [
     description: "for y face",
     price: "4$",
     image: Towel,
+  },
+  {
+    id: 4,
+    name: "Towel2",
+    description: "for y face",
+    price: "4$",
+    image: Towel2,
   },
 ];
 
