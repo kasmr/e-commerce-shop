@@ -12,14 +12,14 @@ import React from "react";
 //Styles
 import useStyles from "./styles";
 
-const Product = ({ product }) => {
+const Product = ({ product, onAddToCart }) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image={product.image}
+        image={product.media.source}
         title={product.name}
         height="0"
       />
@@ -29,15 +29,21 @@ const Product = ({ product }) => {
             {product.name}
           </Typography>
           <Typography variant="h5" gutterBottom>
-            {product.price}
+            {product.price.formatted_with_symbol}
           </Typography>
         </div>
-        <Typography variant="body2" color="textSecondary">
-          {product.description}
-        </Typography>
+        <Typography
+          dangerouslySetInnerHTML={{ __html: product.description }}
+          variant="body2"
+          color="textSecondary"
+        />
       </CardContent>
-      <CardActions disableSpacing className={classes.CardActions}>
-        <IconButton aria-label="Add to cart">
+      <CardActions disableSpacing className={classes.cardActions}>
+        Добавить в корзину
+        <IconButton
+          aria-label="Add to cart"
+          onClick={() => onAddToCart(product.id, product.quantity)}
+        >
           <AddShoppingCart />
         </IconButton>
       </CardActions>
