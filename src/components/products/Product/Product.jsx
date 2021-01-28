@@ -5,6 +5,7 @@ import {
   CardContent,
   CardActions,
   IconButton,
+  LinearProgress,
 } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import React from "react";
@@ -29,13 +30,20 @@ const Product = ({ product, onAddToCart }) => {
             {product.name}
           </Typography>
           <Typography variant="h5" gutterBottom>
-            {product.price.formatted_with_symbol}
+            {product.sku} ₽/шт.
           </Typography>
         </div>
         <Typography
           dangerouslySetInnerHTML={{ __html: product.description }}
           variant="body2"
           color="textSecondary"
+        />
+        Наличие
+        <LinearProgress
+          variant="buffer"
+          value={Number(product.extrafields[0].name)}
+          color={product.extrafields[1].name}
+          valueBuffer={100}
         />
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
