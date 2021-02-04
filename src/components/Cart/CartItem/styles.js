@@ -20,4 +20,8 @@ export default makeStyles(() => ({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  quantity: {
+    margin: '0 1rem',
+    fontWeight: 'bold'
+  }
 }));

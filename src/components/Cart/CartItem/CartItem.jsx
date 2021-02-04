@@ -6,11 +6,12 @@ import {
   CardMedia,
   Typography,
 } from "@material-ui/core";
+import { DeleteForever } from "@material-ui/icons";
 import React from "react";
 
 import useStyles from "./styles";
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, handleUpdateCartQuantity, handleRemoveFromCart }) => {
   const classes = useStyles();
 
   return (
@@ -28,16 +29,31 @@ const CartItem = ({ item }) => {
       </CardContent>
       <CardActions className={classes.cartActions}>
         <div className={classes.buttons}>
-          <Button type="button" size="small">
-            -
+          <Button
+            type="button"
+            size="small"
+            onClick={() => handleUpdateCartQuantity(item.id, item.quantity - 1)}
+          >
+            <Typography variant="h5">-</Typography>
           </Button>
-          <Typography>{item.quantity}</Typography>
-          <Button type="button" size="small">
-            +
+          <Typography className={classes.quantity}>{item.quantity}</Typography>
+          <Button
+            type="button"
+            size="small"
+            onClick={() => {
+              handleUpdateCartQuantity(item.id, item.quantity + 1);
+            }}
+          >
+            <Typography variant="h5">+</Typography>
           </Button>
         </div>
-        <Button variant="contained" type="button" color="error">
-          Удалить
+        <Button
+          variant="contained"
+          type="button"
+          color="secondary"
+          onClick={() => handleRemoveFromCart(item.id)}
+        >
+          <DeleteForever />
         </Button>
       </CardActions>
     </Card>
