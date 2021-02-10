@@ -3,7 +3,7 @@ import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import CustomTextField from "./CustomTextField";
 
-const AdressForm = () => {
+const AdressForm = ({ checkoutToken, next }) => {
   const methods = useForm();
 
   return (
@@ -12,7 +12,7 @@ const AdressForm = () => {
         Адресс доставки
       </Typography>
       <FormProvider {...methods}>
-        <form onSubmit="">
+        <form onSubmit={methods.handleSubmit((data) => next({ ...data }))}>
           <Grid container spacing={3}>
             <CustomTextField required name="Имя" label="Имя" />
             <CustomTextField required name="Фамилия" label="Фамилия" />

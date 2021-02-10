@@ -1,7 +1,7 @@
 import React from "react";
 
 const PaymentForm = () => {
-  return <div>PaymentForm</div>;
+  return <>{/* <Review /> */}</>;
 };
 
 export default PaymentForm;
