@@ -5,7 +5,7 @@ import PaymentForm from "./Forms/PaymentForm";
 import useStyles from "./styles";
 import { commerce } from "../../lib/commerce";
 
-const steps = ["Адрес доставки", "Детали оплаты"];
+const steps = ["Адрес доставки", "Детали заказа"];
 
 const Checkout = ({ cart }) => {
   const classes = useStyles();
@@ -46,7 +46,11 @@ const Checkout = ({ cart }) => {
   const Confirmation = () => <div>Confirmation</div>;
 
   const Form = () =>
-    activeStep === 0 ? <AdressForm next={next} /> : <PaymentForm />;
+    activeStep === 0 ? (
+      <AdressForm next={next} />
+    ) : (
+      <PaymentForm checkoutToken={checkoutToken} />
+    );
 
   return (
     <>

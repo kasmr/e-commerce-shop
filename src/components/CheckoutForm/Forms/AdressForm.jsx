@@ -1,6 +1,7 @@
-import { Grid, InputLabel, Typography } from "@material-ui/core";
+import { Button, Grid, InputLabel, Typography } from "@material-ui/core";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import CustomTextField from "./CustomTextField";
 
 const AdressForm = ({ checkoutToken, next }) => {
@@ -26,6 +27,15 @@ const AdressForm = ({ checkoutToken, next }) => {
             />
             <Grid item xs={12} sm={6}></Grid>
           </Grid>
+          <br />
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Button variant="outlined" component={Link} to="/cart">
+              Назад к корзине
+            </Button>
+            <Button variant="contained" type="submit" color="primary">
+              Далее
+            </Button>
+          </div>
         </form>
       </FormProvider>
     </>
