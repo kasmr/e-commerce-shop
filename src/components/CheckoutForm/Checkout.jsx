@@ -7,11 +7,12 @@ import { commerce } from "../../lib/commerce";
 
 const steps = ["Адрес доставки", "Детали заказа"];
 
-const Checkout = ({ cart }) => {
+const Checkout = ({ cart, order, onHandleCheckout, error }) => {
   const classes = useStyles();
 
   const [activeStep, setActiveStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState(0);
+  const [shippingData, setShippingData] = useState({});
 
   useEffect(() => {
     const generateToken = async () => {
@@ -40,6 +41,8 @@ const Checkout = ({ cart }) => {
   };
 
   const next = (data) => {
+    setShippingData(data);
+
     nextStep();
   };
 
@@ -49,7 +52,13 @@ const Checkout = ({ cart }) => {
     activeStep === 0 ? (
       <AdressForm next={next} />
     ) : (
-      <PaymentForm checkoutToken={checkoutToken} />
+      <PaymentForm
+        backStep={backStep}
+        checkoutToken={checkoutToken}
+        shippingData={shippingData}
+        onHandleCheckout={onHandleCheckout}
+        nextStep={nextStep}
+      />
     );
 
   return (
